@@ -31,18 +31,37 @@ class firstScreen:
         button.pack(padx=5,pady=5)
         button = tk.Button(button_frame, text="F8 View Game", bg = "black", fg="white",width= 100)
         button.pack(padx=5,pady=5)
+        button = tk.Button(button_frame, text="F11 Change Network", bg = "black", fg="white",width= 100) #new as of 2/4/2025
+        button.pack(padx=5,pady=5)
         button = tk.Button(button_frame, text="F12 Clear Game", bg = "black", fg="white",width= 100)
         button.pack(padx=5,pady=5)
 
 
     def make_rows(self, frame, bg_color, num_rows):
+        
+        #Making labels for ID, equipment ID
+        row_frame = tk.Frame(frame, bg=bg_color)
+        row_frame.pack(fill=tk.X, padx=5, pady=1)
+        label = tk.Label(row_frame, text=f"       Player ID", bg=bg_color, font=("Helvetica", 14, "bold"))
+        label.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
+        label = tk.Label(row_frame, text=f"Equipment ID", bg=bg_color, font=("Helvetica", 14, "bold"))
+        label.pack(side=tk.RIGHT, fill=tk.X, expand=True, padx=5)
+
+        
         for row in range(num_rows):
             row_frame = tk.Frame(frame, bg=bg_color)
             row_frame.pack(fill=tk.X, padx=5, pady=1)
 
-            label = tk.Label(row_frame, text=f"{row}", bg=bg_color, font=("Helvetica", 20))
-            label.pack(side=tk.LEFT, padx=5)
+            #Making alignment good for entry boxes
+            if row <= 9:
+                label = tk.Label(row_frame, text=f" {row} ", bg=bg_color, font=("Helvetica", 20))
+                label.pack(side=tk.LEFT, padx=5)
+            else:
+                label = tk.Label(row_frame, text=f"{row}", bg=bg_color, font=("Helvetica", 20))
+                label.pack(side=tk.LEFT, padx=5)
 
+            entry = tk.Entry(row_frame, bg="white", fg="black")
+            entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
             entry = tk.Entry(row_frame, bg="white", fg="black")
             entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
 
